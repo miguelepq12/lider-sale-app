@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "lider-sale-app": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "lider-sale-app"
+    }
+  },
+  "defaultProject": "lider-sale-app",
+  "cli": {
+    "analytics": "f5b67f27-e0a5-48c7-81c0-7bc27e3dc8f0"
+  }
 }
