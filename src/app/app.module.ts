@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ProductsViewComponent } from './products-view/products-view.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
-import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
 
 @NgModule({
   declarations: [
