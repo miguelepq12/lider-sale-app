@@ -33,20 +33,34 @@ describe('SearchBarComponent', () => {
   it('should show selected search to write text', () => {
     const searchBarDebug: DebugElement = fixture.debugElement;
     const inputText = searchBarDebug.query(By.css('#searchInput'));
-    const selectedSearch = searchBarDebug.query(By.css('#selectedSearch'));
 
     inputText.nativeElement.value = textTest;
     inputText.triggerEventHandler('keyup', {});
     fixture.detectChanges();
 
     expect(component.showSearchList).toBeTrue();
-    expect(inputText.nativeElement.value).toEqual(selectedSearch.nativeElement.innerHTML);
   });
 
-  it('should refresh product page with query', () => {
-    component.routerUrl= '/products';
-    component.searchQuery = textTest;
+  it('should save search to write text', () => {
+    const searchBarDebug: DebugElement = fixture.debugElement;
+    const inputText = searchBarDebug.query(By.css('#searchInput'));
+    const selectedSearchText = searchBarDebug.query(By.css('#selectedSearchText'));
+
+    inputText.nativeElement.value = textTest;
+    inputText.triggerEventHandler('keyup', {});
     fixture.detectChanges();
-    expect (routerSpy.navigate).toHaveBeenCalledWith([component.routerUrl], {queryParams: {query: component.searchQuery}});
+
+    expect(inputText.nativeElement.value).toEqual(selectedSearchText.nativeElement.innerHTML);
+  });
+
+  it('should send search text when click', () => {
+    const searchBarDebug: DebugElement = fixture.debugElement;
+    const selectedSearch = searchBarDebug.query(By.css('#selectedSearch'));
+    component.searchText = textTest;
+
+    selectedSearch.triggerEventHandler('click', {});
+    fixture.detectChanges();
+
+    component.searchQuery.subscribe((text: string) => expect(text).toBe(textTest));
   });
 });
