@@ -17,6 +17,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import {ProductService} from './products/shared/services/product.service';
 
 registerLocaleData(es);
 
@@ -39,7 +40,7 @@ registerLocaleData(es);
     NzInputModule,
     NzIconModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: es_ES }],
+  providers: [ProductService, { provide: NZ_I18N, useValue: es_ES }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
