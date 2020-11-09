@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,21 +7,25 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
   showSearchList: boolean;
-  routerUrl: string;
-  searchText: string;
+  isOverlay: boolean;
+  @Input() searchText: string;
   @Output() searchQuery = new EventEmitter<string>();
 
-  constructor() { }
-
-  public showListSearch(textSearch: string): void {
-    this.showSearchList = textSearch.length > 0;
+  constructor() {
   }
 
-  public initParams(): void {
-
+  public onShowListSearch(textSearch: string): void {
+    this.showSearchList = textSearch ? textSearch.length > 0 :
+      this.searchText.length > 0;
   }
 
+  public onSearchQuery(): void {
+    this.searchQuery.emit(this.searchText);
+  }
+
+  public onSwitchOverlay(): void {
+    this.isOverlay = !this.isOverlay;
+  }
   ngOnInit(): void {
   }
-
 }
