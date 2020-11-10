@@ -47,12 +47,12 @@ export class ProductListComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.searchQuery = params.name;
       this.pageNumber = params.page;
+      this.getProducts(this.searchQuery, this.pageNumber);
     });
   }
 
   ngOnInit(): void {
     this.initParams();
-    this.getProducts(this.searchQuery, this.pageNumber);
   }
 
 }
