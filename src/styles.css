@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Bogle";
+  src: local("Bogle"), url(assets/fonts/Bogle/BogleWeb_subset-Regular.woff2) format("woff");
+}
+
+@font-face {
+  font-family: "Bogle";
+  font-weight: bold;
+  src: local("Bogle-bold"), url(assets/fonts/Bogle/BogleWeb-Bold.ttf) format("woff");
+}
+
+
+body{
+  font-family: 'Bogle', serif;
+  color: #000000;
+  background-color: #f4f4f4;
+  line-height: 1.5
+}
+
