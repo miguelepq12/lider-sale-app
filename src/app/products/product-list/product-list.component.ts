@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../shared/services/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Product} from '../shared/product';
+import {Page} from '../shared/Page';
 
 @Component({
   selector: 'app-product-list',
@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit {
   searchQuery: string;
   pageNumber: number;
   loading: boolean;
-  products: Product[];
+  productsPage: Page;
 
   constructor(private productService: ProductService, private router: Router,
               private route: ActivatedRoute) { }
@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
   public getProducts(textSearch: string, page: number) {
     this.productService.getProducts(textSearch, page).subscribe(
       result => {
-        this.products = result;
+        this.productsPage = result;
         this.loading = false;
       }
     );

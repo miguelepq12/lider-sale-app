@@ -1,12 +1,14 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ProductListComponent} from './product-list.component';
-import {Product} from '../shared/product';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../shared/services/product.service';
 import {RouterTestingModule} from '@angular/router/testing';
-import {of} from "rxjs";
+import {of} from 'rxjs';
+import {PRODUCT_PAGE_FAKE} from '../shared/services/product-page.fake.spec';
+import {ProductProxyService} from '../shared/services/product-proxy.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('ProductListComponent', () => {
   const textTest = 'arepera';
@@ -20,16 +22,16 @@ describe('ProductListComponent', () => {
 
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
-  let expectedProducts: Product[];
   let productService: ProductService;
+  let productProxy: ProductProxyService;
   let router: Router;
 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ProductListComponent],
-      imports: [RouterTestingModule, ],
-      providers: [ProductService,
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      providers: [ProductService, ProductProxyService,
         {provide: ActivatedRoute, useValue: activatedRouteMock}],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
@@ -39,6 +41,7 @@ describe('ProductListComponent', () => {
   beforeEach(() => {
     productService = TestBed.inject(ProductService);
     router = TestBed.inject(Router);
+    productProxy = TestBed.inject(ProductProxyService);
   });
 
   beforeEach(() => {
@@ -52,20 +55,12 @@ describe('ProductListComponent', () => {
   });
 
 
-  beforeEach(() => {
-    expectedProducts = [{
-      id: 42, brand: 'Test', description: 'desc',
-      image: 'www.l_ider.cl/catalogo/images/whiteLineIcon.svg',
-      price: 1000, priceWithDiscount: 500, discount: 50
-    }];
-  });
-
   it('should get products list', () => {
-    spyOn(productService, 'getProducts').and.returnValue(of(expectedProducts));
+    spyOn(productService, 'getProducts').and.returnValue(of(PRODUCT_PAGE_FAKE));
     fixture.detectChanges();
     component.getProducts(textTest, pageNumber);
     fixture.detectChanges();
-    expect(component.products).toEqual(expectedProducts);
+    expect(component.productsPage).toEqual(PRODUCT_PAGE_FAKE);
   });
 
 

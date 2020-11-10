@@ -5,7 +5,7 @@
   <div nz-col nzSpan="4" nzLg="6"></div>
   <div nz-col nzSpan="20" nzLg="18">
     <div nz-row >
-      <div nz-col nzSpan="8" nzLg="6" style="padding: 3px" *ngFor="let p of products">
+      <div nz-col nzSpan="8" nzLg="6" style="padding: 3px" *ngFor="let p of productsPage?productsPage.products:[]">
         <div class="product-item" >
           <a>
             <div class="product-item-img">
