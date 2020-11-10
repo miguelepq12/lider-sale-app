@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "testreport": "ng test --browsers=ChromeHeadless --no-watch --code-coverage",
+    "testreport": "ng test --configuration=test --browsers=ChromeHeadless --no-watch --code-coverage",
     "sonar": "sonar-scanner -Dsonar.login=e5a304b3b2511a949690c5599449d061e917f3b3"
   },
   "private": true,

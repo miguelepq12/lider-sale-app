@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
+  production: false,
   apiProductUrl: 'https://lider-sale.herokuapp.com/api/'
 };

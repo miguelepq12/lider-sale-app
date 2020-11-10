@@ -18,7 +18,7 @@ describe('ProductProxyService', () => {
     expect(service).toBeTruthy();
   });
 
-  it ('should get products', async(() => {
+  it ('should get products', async((done) => {
     service.getProducts('', 1).subscribe(
       (response) => expect(response.content.length).toBeGreaterThan(0),
       (error) => fail(error)
