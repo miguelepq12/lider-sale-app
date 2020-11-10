@@ -61,8 +61,21 @@ describe('SearchBarComponent', () => {
     const searchOverlay = searchBarDebug.query(By.css('.search-overlay'));
     component.searchText = textTest;
 
-    searchOverlay.triggerEventHandler('click', component.onSwitchOverlay());
+    searchOverlay.triggerEventHandler('click', component.onSwitchOverlay(false));
     fixture.detectChanges();
     expect(component.isOverlay).toBeFalse();
+  });
+
+  it('should verify if search text is empty', () => {
+    component.searchText = textTest;
+    fixture.detectChanges();
+    expect(component.isSearchTextEmpty()).toBeFalse();
+  });
+
+  it('should clean search text', () => {
+    component.cleanSearchText();
+    fixture.detectChanges();
+    expect(component.searchText).toEqual('');
+    expect(component.showSearchList).toBeFalse();
   });
 });
