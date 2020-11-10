@@ -23,9 +23,19 @@ export class SearchBarComponent implements OnInit {
     this.searchQuery.emit(this.searchText);
   }
 
-  public onSwitchOverlay(): void {
-    this.isOverlay = !this.isOverlay;
+  public onSwitchOverlay(isOverlay: boolean): void {
+    this.isOverlay = isOverlay;
   }
+
+  public isSearchTextEmpty(): boolean {
+    return this.searchText ? this.searchText.length <= 0 : true;
+  }
+
+  public cleanSearchText(): void {
+    this.searchText = '';
+    this.showSearchList = false;
+  }
+
   ngOnInit(): void {
   }
 }
