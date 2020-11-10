@@ -7,7 +7,7 @@ RUN npm install
 ENV PATH="./node_modules/.bin:$PATH"
 
 COPY . ./
-RUN ng build --configuration=production
+RUN ng build --prod
 
 FROM nginx:1.15.8-alpine
 RUN apk --no-cache add curl
