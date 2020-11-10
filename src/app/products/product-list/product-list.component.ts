@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../shared/services/product.service';
-import {Product} from '../shared/product';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Product} from '../shared/product';
 
 @Component({
   selector: 'app-product-list',
@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
   searchQuery: string;
   pageNumber: number;
   loading: boolean;
+  products: Product[];
 
   constructor(private productService: ProductService, private router: Router,
               private route: ActivatedRoute) { }
@@ -24,6 +25,7 @@ export class ProductListComponent implements OnInit {
         this.loading = false;
       }
     );
+
   }
 
   public onSearchText(textSearch: string) {
