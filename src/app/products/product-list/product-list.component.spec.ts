@@ -47,7 +47,7 @@ describe('ProductListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  /**
+
   beforeEach(() => {
     expectedProducts = [{
       id: 42, brand: 'Test', description: 'desc',
@@ -77,5 +77,5 @@ describe('ProductListComponent', () => {
     fixture.detectChanges();
     expect(TestBed.inject(Router).navigate).toHaveBeenCalledWith([component.productUrl],
       {queryParams: {query: component.searchQuery, page: component.pageNumber}});
-  });**/
+  });
 });
