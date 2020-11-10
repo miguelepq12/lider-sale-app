@@ -1,1 +1,43 @@
-<p>product-list works!</p>
+<app-search-bar></app-search-bar>
+<div class="product-result">
+  <p >Resultados para <b>{{searchQuery}}:</b></p>
+</div>
+<div nz-row class="product-list">
+  <div nz-col nzSpan="4" nzLg="6"></div>
+  <div nz-col nzSpan="20" nzLg="18">
+    <div nz-row >
+      <div nz-col nzSpan="8" nzLg="6" style="padding: 3px" *ngFor="let p of products">
+        <div class="product-item" >
+          <a>
+            <div class="product-item-img">
+              <img [src]="['https://'+p.image]" height="220px" width="220px" alt="">
+              <div class="product-image-shadow"></div>
+            </div>
+            <div class="product-item-body">
+              <div class="product-item-title">
+                <b>{{p.brand}} </b><span>{{p.description}}</span>
+              </div>
+              <div class="product-item-description">
+                ${{p.priceWithDiscount>0?p.priceWithDiscount:p.price}} <div class="product-item-discount" [hidden]="p.discount<=0">{{p.discount}}%</div>
+              </div>
+              <div ><span [hidden]="p.discount<=0" class="product-item-price-old">${{p.price}}</span></div>
+            </div>
+            <div class="product-item-labels">
+              <div class="label-home-delivery"><img alt="" src="assets/images/despacho-icon.svg" height="20px" width="17px"/><span>despacho</span></div>
+              <div class="label-store-delivery"><img alt="" src="assets/images/delivery-icon.svg" height="14px" width="17px"/><span>retiro</span></div>
+            </div>
+            <div class="btn-box">
+              <button nz-button class="btn-add" nzType="link" >Agregar</button>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+
