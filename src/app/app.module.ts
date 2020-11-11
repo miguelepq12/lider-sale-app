@@ -28,7 +28,6 @@ registerLocaleData(es);
   declarations: [
     AppComponent,
     SearchBarComponent,
-    MainLayoutComponent,
     ProductListComponent,
     PaginationComponent,
     FooterComponent

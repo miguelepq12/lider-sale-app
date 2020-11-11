@@ -3,10 +3,10 @@
   <p >Resultados<span [hidden]="!searchText"> para <strong>{{searchText}}</strong></span>:</p>
 </div>
 <div nz-row class="product-list">
-  <div nz-col nzSpan="4" nzLg="6"></div>
-  <div nz-col nzSpan="20" nzLg="18">
-    <div nz-row >
-      <div nz-col nzSpan="8" nzLg="6" nzSm="4" style="padding: 3px" *ngFor="let p of productsPage?productsPage.products:[]">
+  <div nz-col  nzSm="0" nzLg="6"></div>
+  <div nz-col nzSm="24" nzLg="18">
+    <div nz-row  class="body-sm">
+      <div nz-col nzSm="8" nzLg="6" style="padding: 3px" *ngFor="let p of productsPage?productsPage.products:[]">
         <div class="product-item" >
           <a>
             <div class="product-item-img">
