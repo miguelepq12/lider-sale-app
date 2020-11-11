@@ -20,6 +20,7 @@ import {ProductService} from './products/shared/services/product.service';
 import {ProductProxyService} from './products/shared/services/product-proxy.service';
 import { PaginationComponent } from './views/pagination/pagination.component';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 registerLocaleData(es);
 
@@ -43,7 +44,8 @@ registerLocaleData(es);
     NzInputModule,
     NzIconModule,
     HttpClientModule,
-    NzPaginationModule
+    NzPaginationModule,
+    NzDropDownModule
   ],
   providers: [ProductService, ProductProxyService, { provide: NZ_I18N, useValue: es_ES }],
   bootstrap: [AppComponent]

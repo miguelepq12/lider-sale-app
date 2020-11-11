@@ -1,6 +1,18 @@
 <app-search-bar [searchText]="searchText" (searchQuery)="onSearchQuery($event)"></app-search-bar>
 <div class="product-result">
   <p >Resultados<span [hidden]="!searchText"> para <strong>{{searchText}}</strong></span>:</p>
+  <button nz-button nz-dropdown [nzDropdownMenu]="menu4">
+    Ordenar por: destacados
+    <i nz-icon nzType="down"></i>
+  </button>
+  <nz-dropdown-menu #menu4="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item>Destacados</li>
+      <li nz-menu-item>Menor precio</li>
+      <li nz-menu-item>Mayor precio</li>
+      <li nz-menu-item>Menor descuento</li>
+    </ul>
+  </nz-dropdown-menu>
 </div>
 <div nz-row class="product-list">
   <div nz-col  nzSm="0" nzLg="6"></div>
