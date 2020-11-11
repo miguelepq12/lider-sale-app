@@ -18,8 +18,15 @@ describe('ProductProxyService', () => {
     expect(service).toBeTruthy();
   });
 
-  it ('should get products', async((done) => {
-    service.getProducts('', 1).subscribe(
+  it ('should get products with data', async((done) => {
+    service.getProducts('', 1, 12).subscribe(
+      (response) => expect(response.content.length).toBeGreaterThan(0),
+      (error) => fail(error)
+    );
+  }));
+
+  it ('should get products without data', async((done) => {
+    service.getProducts().subscribe(
       (response) => expect(response.content.length).toBeGreaterThan(0),
       (error) => fail(error)
     );

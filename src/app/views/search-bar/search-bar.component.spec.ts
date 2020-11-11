@@ -39,7 +39,7 @@ describe('SearchBarComponent', () => {
 
   it('should save search to write text', () => {
     const searchBarDebug: DebugElement = fixture.debugElement;
-    const selectedSearchText = searchBarDebug.query(By.css('.text-search > b'));
+    const selectedSearchText = searchBarDebug.query(By.css('.text-search > strong'));
 
     component.searchText = textTest;
     fixture.detectChanges();

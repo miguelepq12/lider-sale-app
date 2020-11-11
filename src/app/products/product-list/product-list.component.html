@@ -1,12 +1,12 @@
 <app-search-bar [searchText]="searchText" (searchQuery)="onSearchQuery($event)"></app-search-bar>
 <div class="product-result">
-  <p >Resultados<span [hidden]="!searchText"> para <b>{{searchText}}</b></span>:</p>
+  <p >Resultados<span [hidden]="!searchText"> para <strong>{{searchText}}</strong></span>:</p>
 </div>
 <div nz-row class="product-list">
   <div nz-col nzSpan="4" nzLg="6"></div>
   <div nz-col nzSpan="20" nzLg="18">
     <div nz-row >
-      <div nz-col nzSpan="8" nzLg="6" style="padding: 3px" *ngFor="let p of productsPage?productsPage.products:[]">
+      <div nz-col nzSpan="8" nzLg="6" nzSm="4" style="padding: 3px" *ngFor="let p of productsPage?productsPage.products:[]">
         <div class="product-item" >
           <a>
             <div class="product-item-img">
@@ -15,7 +15,7 @@
             </div>
             <div class="product-item-body">
               <div class="product-item-title">
-                <b>{{p.brand}} </b><span>{{p.description}}</span>
+                <strong>{{p.brand}} </strong><span>{{p.description}}</span>
               </div>
               <div class="product-item-description">
                 ${{this.formatPrice(p.priceWithDiscount>0?p.priceWithDiscount:p.price)}} <div class="product-item-discount" [hidden]="p.discount<=0">{{p.discount}}%</div>
@@ -36,6 +36,7 @@
     <app-pagination [hidden]="productsPage?productsPage.totalPages<=0:true" [numberPages]="productsPage?productsPage.totalPages:1" [selectedPage]="pageNumber" [sizePage]="productsPage?productsPage.size:12" (changePage)="onSetPageNumber($event)"></app-pagination>
   </div>
 </div>
+<app-footer></app-footer>
 
 
 
