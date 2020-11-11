@@ -50,7 +50,7 @@ export class ProductListComponent implements OnInit {
   private initParams() {
     this.route.queryParams.subscribe(params => {
       this.searchText = params.query;
-      this.pageNumber = params.page;
+      this.pageNumber = params.page ? params.page : 1;
       this.getProducts(this.searchText, this.pageNumber);
     });
   }
