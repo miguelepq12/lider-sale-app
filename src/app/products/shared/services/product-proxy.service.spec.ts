@@ -1,6 +1,6 @@
 import {async, TestBed} from '@angular/core/testing';
 
-import { ProductProxyService } from './product-proxy.service';
+import {ProductProxyService} from './product-proxy.service';
 import {HttpClientModule} from '@angular/common/http';
 
 describe('ProductProxyService', () => {

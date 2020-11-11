@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
-import {Observable, of, throwError} from 'rxjs';
-import {Page} from '../Page';
-import {PRODUCT_PAGE_FAKE} from './product-page.fake.spec';
+import {Injectable} from '@angular/core';
+import {Observable, throwError} from 'rxjs';
+import {Page} from '../page';
 import {ProductProxyService} from './product-proxy.service';
 import {catchError, map} from 'rxjs/operators';
 
