@@ -1,11 +1,13 @@
 .header{
   height: 58px;
-  max-width: 1440px;
   margin: auto;
 }
 
 .header-color{
   background-color: #0071ce;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
 }
 
 .logo{

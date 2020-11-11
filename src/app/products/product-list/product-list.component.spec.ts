@@ -1,14 +1,16 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ProductListComponent} from './product-list.component';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../shared/services/product.service';
 import {RouterTestingModule} from '@angular/router/testing';
 import {of} from 'rxjs';
-import {PRODUCT_PAGE_FAKE} from '../shared/services/product-page.fake.spec';
+import {PRODUCT_PAGE_FAKE} from '../shared/fake/product-page.fake.spec';
 import {ProductProxyService} from '../shared/services/product-proxy.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {registerLocaleData} from '@angular/common';
+import localeCl from '@angular/common/locales/es-CL';
 
 describe('ProductListComponent', () => {
   const textTest = 'arepera';
@@ -25,14 +27,15 @@ describe('ProductListComponent', () => {
   let productService: ProductService;
   let productProxy: ProductProxyService;
   let router: Router;
-
+  registerLocaleData(localeCl, 'es_CL');
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ProductListComponent],
       imports: [RouterTestingModule, HttpClientTestingModule],
       providers: [ProductService, ProductProxyService,
-        {provide: ActivatedRoute, useValue: activatedRouteMock}],
+        {provide: ActivatedRoute, useValue: activatedRouteMock},
+        {provide: LOCALE_ID, useValue: 'es_CL'}],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();
@@ -65,18 +68,26 @@ describe('ProductListComponent', () => {
 
 
   it('should refresh page to receive search query', () => {
+    // @ts-ignore
     spyOn(router, 'navigate');
-    component.onSearchText(textTest);
+    component.onSearchQuery(textTest);
     fixture.detectChanges();
     expect(TestBed.inject(Router).navigate).toHaveBeenCalledWith([component.productUrl],
-      {queryParams: {query: component.searchQuery, page: component.pageNumber}});
+      {queryParams: {query: component.searchText, page: component.pageNumber}});
   });
 
   it('should refresh page to receive page number', () => {
+    // @ts-ignore
     spyOn(router, 'navigate');
     component.onSetPageNumber(pageNumber);
     fixture.detectChanges();
     expect(TestBed.inject(Router).navigate).toHaveBeenCalledWith([component.productUrl],
-      {queryParams: {query: component.searchQuery, page: component.pageNumber}});
+      {queryParams: {query: component.searchText, page: component.pageNumber}});
+  });
+
+  it('should format number', () => {
+    const numberWithoutFormat = 100000;
+    const numberFormat = '100.000';
+    expect(component.formatPrice(numberWithoutFormat)).toEqual(numberFormat);
   });
 });

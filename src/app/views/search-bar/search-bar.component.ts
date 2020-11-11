@@ -21,6 +21,7 @@ export class SearchBarComponent implements OnInit {
 
   public onSearchQuery(): void {
     this.searchQuery.emit(this.searchText);
+    this.isOverlay = false;
   }
 
   public onSwitchOverlay(isOverlay: boolean): void {

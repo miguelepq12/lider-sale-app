@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../shared/services/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Page} from '../shared/Page';
+import {Page} from '../shared/page';
+import {formatNumber} from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
@@ -10,13 +11,14 @@ import {Page} from '../shared/Page';
 })
 export class ProductListComponent implements OnInit {
   productUrl = '/products';
-  searchQuery: string;
+  searchText: string;
   pageNumber: number;
   loading: boolean;
   productsPage: Page;
 
   constructor(private productService: ProductService, private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   public getProducts(textSearch: string, page: number) {
     this.productService.getProducts(textSearch, page).subscribe(
@@ -25,11 +27,10 @@ export class ProductListComponent implements OnInit {
         this.loading = false;
       }
     );
-
   }
 
-  public onSearchText(textSearch: string) {
-    this.searchQuery = textSearch;
+  public onSearchQuery(textSearch: string) {
+    this.searchText = textSearch;
     this.refreshPage();
   }
 
@@ -39,15 +40,18 @@ export class ProductListComponent implements OnInit {
   }
 
   private refreshPage() {
-    this.router.navigate([this.productUrl],
-      { queryParams: { query: this.searchQuery,  page: this.pageNumber } });
+    this.router.navigate(['/products'],
+      { queryParams: { query: this.searchText,  page: this.pageNumber }});
   }
 
+  public formatPrice(price: number): string {
+    return formatNumber(price, 'es_CL');
+  }
   private initParams() {
     this.route.queryParams.subscribe(params => {
-      this.searchQuery = params.name;
+      this.searchText = params.query;
       this.pageNumber = params.page;
-      this.getProducts(this.searchQuery, this.pageNumber);
+      this.getProducts(this.searchText, this.pageNumber);
     });
   }
 
