@@ -17,18 +17,45 @@
 }
 
 .product-result button, /deep/.product-result:active button{
+
+}
+
+.select-tipo {
   position: absolute;
   height: fit-content;
   right: 10px;
-  padding: 10px;
+  padding: 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+  border-color: transparent;
   border-radius: 8px;
-  font-weight: 800;
+  font-weight: 700;
   background-color: #fff!important;
+  font-size: 1rem;
 }
 
-.product-result strong{
-  color: #000000;
+.select-tipo:before {
+  position: absolute;
+  height: fit-content;
+  right: 10px;
+  padding: 5px;
+  border-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+  border-radius: 8px;
+  font-weight: 700;
+  background-color: #fff!important;
+  font-size: 1rem;
+}
+
+.select-tipo:focus{
+  outline: none;
+}
+.select-tipo option {
+  color: rgb(204, 204, 204);
+  display: flex;
+  padding: 8px;
+  transition: color 150ms ease 0s;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
 
 .product-item{
