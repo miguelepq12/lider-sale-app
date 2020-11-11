@@ -305,6 +305,15 @@
   }
 }
 
+@media (max-width: 380px) {
+
+  /deep/ .search-box-around {
+    width: 25% !important;
+    margin: 0 !important;
+    flex: none !important;
+  }
+}
+
 
 .burger-icon-cross {
   width: 2rem;
