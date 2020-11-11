@@ -1,3 +1,4 @@
+
 .product-list{
   margin: auto;
   max-width: 1320px
@@ -166,4 +167,11 @@
   padding-bottom: 14px;
   width: 100%;
   margin: auto;
+}
+
+@media (max-width: 846px) {
+  /deep/.body-sm, /deep/.product-list{
+    display: flex!important;
+    justify-content: center!important;
+  }
 }

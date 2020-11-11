@@ -10,9 +10,11 @@
   z-index: 100;
 }
 
-.logo{
+.logo, /deep/.logo:hover, /deep/.logo:active,/deep/.logo:link{
   width: 152px;
   height: 35px;
+  border: none!important;
+  cursor: pointer;
 }
 
 .icon-super{
@@ -245,7 +247,37 @@
   margin-left: 0.8rem;
 }
 
+@media (max-width: 846px) {
+  /deep/.hidden-sm{
+    visibility: hidden!important;
+    position: absolute!important;
+  }
 
+  /deep/.btn-category{
+    font-size: 0px!important;
+    min-width: 0px!important;
+  }
+
+}
+
+@media (max-width: 525px) {
+
+  /deep/.search-box-around{
+    width: 40%!important;
+    margin: 0!important;
+    flex: none!important;
+  }
+
+  /deep/.btn-cart{
+    width: fit-content!important;
+    margin-left: 10px;
+  }
+
+  /deep/.cart-quantity{
+    visibility: hidden!important;
+    position: absolute!important;
+  }
+}
 
 
 
