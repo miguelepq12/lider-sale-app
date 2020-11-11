@@ -18,6 +18,7 @@ import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {ProductService} from './products/shared/services/product.service';
 import {ProductProxyService} from "./products/shared/services/product-proxy.service";
+import { PaginationComponent } from './views/pagination/pagination.component';
 
 registerLocaleData(es);
 
@@ -27,7 +28,8 @@ registerLocaleData(es);
     AppComponent,
     SearchBarComponent,
     MainLayoutComponent,
-    ProductListComponent
+    ProductListComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
