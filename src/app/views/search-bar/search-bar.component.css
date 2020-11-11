@@ -276,13 +276,13 @@
     min-width: 0px !important;
   }
 
-  .advice {
-    visibility: hidden;
+  /deep/.advice {
+    visibility: hidden!important;
     position: absolute;
   }
 
   .header {
-    margin-top: 0;
+    margin-top: 0!important;
   }
 }
 
