@@ -17,7 +17,7 @@ import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {ProductService} from './products/shared/services/product.service';
-import {ProductProxyService} from "./products/shared/services/product-proxy.service";
+import {ProductProxyService} from './products/shared/services/product-proxy.service';
 
 registerLocaleData(es);
 
