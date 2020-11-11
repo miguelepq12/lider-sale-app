@@ -90,4 +90,11 @@ describe('ProductListComponent', () => {
     const numberFormat = '100.000';
     expect(component.formatPrice(numberWithoutFormat)).toEqual(numberFormat);
   });
+
+  it('should start parameter query without number',  async(() => {
+    spyOn(productService, 'getProducts').and.returnValue(of(PRODUCT_PAGE_FAKE));
+    TestBed.inject(ActivatedRoute).queryParams = of({query: undefined, page: undefined});
+    fixture.detectChanges();
+    expect(component.pageNumber).toEqual(1);
+  }));
 });
