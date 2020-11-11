@@ -1,1 +1,3 @@
-<nz-pagination [nzPageIndex]="selectedPage" [nzTotal]="numberPages"></nz-pagination>
+<div class="pagination-box">
+  <nz-pagination [nzPageIndex]="selectedPage" [nzTotal]="numberPages" (nzPageIndexChange)="changeNumberPage($event)" [(nzPageSize)]="sizePage"></nz-pagination>
+</div>

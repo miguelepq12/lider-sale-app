@@ -1,6 +1,6 @@
 <app-search-bar [searchText]="searchText" (searchQuery)="onSearchQuery($event)"></app-search-bar>
 <div class="product-result">
-  <p >Resultados <span [hidden]="!searchText">para <b>{{searchText}}</b></span>:</p>
+  <p >Resultados<span [hidden]="!searchText"> para <b>{{searchText}}</b></span>:</p>
 </div>
 <div nz-row class="product-list">
   <div nz-col nzSpan="4" nzLg="6"></div>
@@ -33,6 +33,7 @@
         </div>
       </div>
     </div>
+    <app-pagination [hidden]="productsPage?productsPage.totalPages<=0:true" [numberPages]="productsPage?productsPage.totalPages:1" [selectedPage]="pageNumber" [sizePage]="productsPage?productsPage.size:12" (changePage)="onSetPageNumber($event)"></app-pagination>
   </div>
 </div>
 
