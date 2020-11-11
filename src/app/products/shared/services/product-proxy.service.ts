@@ -11,7 +11,7 @@ export class ProductProxyService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(textSearch: string = '', page: number = 0, elementPage: number = 12): Observable<any> {
+  getProducts(textSearch: string = '', page: number = 1, elementPage: number = 12): Observable<any> {
     return this.http.get(this.URL_API,
       {
         params: {text: textSearch, page: page + '', 'element-page': elementPage + ''},

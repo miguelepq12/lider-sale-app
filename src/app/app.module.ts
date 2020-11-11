@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SearchBarComponent} from './views/search-bar/search-bar.component';
 import {ProductListComponent} from './products/product-list/product-list.component';
-import {MainLayoutComponent} from './views/main-layout/main-layout.component';
+import {FooterComponent} from './views/footer/footer.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -28,9 +28,9 @@ registerLocaleData(es);
   declarations: [
     AppComponent,
     SearchBarComponent,
-    MainLayoutComponent,
     ProductListComponent,
-    PaginationComponent
+    PaginationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

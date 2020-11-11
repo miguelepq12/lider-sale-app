@@ -1,0 +1,23 @@
+.footer-box{
+  padding: 18px;
+  margin-top: 70px;
+}
+
+.footer{
+  width: 100%;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+  border-radius: 8px;
+  background-color: #fff!important;
+}
+
+.span-legal {
+  padding: 1.25rem;
+  color: #0071ce;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.arrow{
+  float: right;
+}

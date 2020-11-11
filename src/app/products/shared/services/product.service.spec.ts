@@ -2,9 +2,10 @@ import {async, TestBed} from '@angular/core/testing';
 
 import {ProductService} from './product.service';
 import {ProductProxyService} from './product-proxy.service';
-import {of} from 'rxjs';
+import {defer, of} from 'rxjs';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {PRODUCT_PAGE_API_FAKE} from "../fake/product-page-complete.fake.spec";
+import {HttpErrorResponse} from "@angular/common/http";
 
 describe('ProdutService', () => {
   const textTest = 'arepera';
@@ -12,6 +13,10 @@ describe('ProdutService', () => {
 
   let service: ProductService;
   let proxy: ProductProxyService;
+
+  function asyncError<T>(errorObject: any) {
+    return defer(() => Promise.reject(errorObject));
+  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,4 +42,20 @@ describe('ProdutService', () => {
     );
   }));
 
+  it('should get a error to get products', async(() => {
+    const errorResponse = new HttpErrorResponse({
+      error: '409 error',
+      status: 409,
+      statusText: 'Conflict'
+    });
+    spyOn(proxy, 'getProducts').and.returnValue(asyncError(errorResponse));
+
+    service.getProducts('fd', 1).subscribe(
+      data => fail('Should have failed with 409 error'),
+      (error: HttpErrorResponse) => {
+        expect(error.status).toEqual(409);
+        expect(error.error).toContain('409 error');
+      });
+
+  }));
 });
