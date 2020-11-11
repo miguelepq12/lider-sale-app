@@ -1,11 +1,10 @@
 import {async, TestBed} from '@angular/core/testing';
 
-import { ProductService } from './product.service';
+import {ProductService} from './product.service';
 import {ProductProxyService} from './product-proxy.service';
 import {of} from 'rxjs';
-import {PRODUCT_PAGE_FAKE} from './product-page.fake.spec';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {PRODUCT_PAGE_API_FAKE} from "./product-page-complete.fake.spec";
+import {PRODUCT_PAGE_API_FAKE} from "../fake/product-page-complete.fake.spec";
 
 describe('ProdutService', () => {
   const textTest = 'arepera';
