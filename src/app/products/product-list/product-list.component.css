@@ -16,10 +16,6 @@
   justify-self: self-start;
 }
 
-.product-result button, /deep/.product-result:active button{
-
-}
-
 .select-tipo {
   position: absolute;
   height: fit-content;
@@ -28,7 +24,7 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
   border-color: transparent;
   border-radius: 8px;
-  font-weight: 700;
+  color: #737373;
   background-color: #fff!important;
   font-size: 1rem;
 }
